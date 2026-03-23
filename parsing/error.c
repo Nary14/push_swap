@@ -56,10 +56,10 @@ void	error_exit(void)
 	exit(EXIT_FAILURE);
 }
 
-int main(void)
-{
-	error_exit();
-	printf("%d\n", valid_number("6"));
-	printf("%d\n", duplicat("sadf", '1'));
-	printf("%d\n", ft_atoi("-54485"));
-}
+// int main(void)
+// {
+// 	error_exit();
+// 	printf("%d\n", valid_number("6"));
+// 	printf("%d\n", duplicat("sadf", '1'));
+// 	printf("%d\n", ft_atoi("-54485"));
+// }
