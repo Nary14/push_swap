@@ -6,7 +6,7 @@
 /*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 05:55:20 by marasolo          #+#    #+#             */
-/*   Updated: 2026/03/23 13:03:01 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/03/24 08:34:21 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,19 @@ int	valid_number(char *str)
 	return (1);
 }
 
-/*verifie les doublent dans le tableau*/
-int	duplicat(t_stack *stack, int valu)
+//verifie les doublent
+int	duplicat(t_list *stack, int valu)
 {
-	t_node	current;
+	t_list	*tmp;
+	int		*count;
 
-	current = stack->top;
-	while (current)
+	tmp = stack
+	while (tmp)
 	{
-		if (current->valu == valu)
+		count = (int *)tmp->content
+		if (*count == num)
 			return (1);
-		current = current->next;
+		tmp = tmp->next;
 	}
 	return (0);
 }
