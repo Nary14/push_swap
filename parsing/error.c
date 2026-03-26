@@ -3,20 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
+/*   By: traomeli <traomeli@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 05:55:20 by marasolo          #+#    #+#             */
-/*   Updated: 2026/03/24 08:34:21 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/03/25 07:56:35 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "push_swap.h"
+#include "../push_swap.h"
 #include <unistd.h>
 
 #include <stdlib.h>
 #include <stdio.h>
 
-/*verifie si le chaine de carracter est un nombre valide*/
 int	valid_number(char *str)
 {
 	int i;
@@ -35,17 +34,16 @@ int	valid_number(char *str)
 	return (1);
 }
 
-//verifie les doublent
 int	duplicat(t_list *stack, int valu)
 {
 	t_list	*tmp;
 	int		*count;
 
-	tmp = stack
+	tmp = stack;
 	while (tmp)
 	{
-		count = (int *)tmp->content
-		if (*count == num)
+		count = (int *)tmp->content;
+		if (*count == valu)
 			return (1);
 		tmp = tmp->next;
 	}

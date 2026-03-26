@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
+/*   By: traomeli <traomeli@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 09:55:37 by marasolo          #+#    #+#             */
-/*   Updated: 2026/03/24 11:13:23 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/03/25 09:21:16 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "push_swap.h"
+#include "push_swap.h"
 
 int	process_number(char	*str, t_list **stack)
 {
@@ -53,9 +53,7 @@ int	parse_strings(char *str, t_list **stack)
 	while (split[i])
 	{
 		if (!process_number(split[i], stack))
-		{
 			result = 0;
-		}
 		i++;
 	}
 	free(split);
@@ -67,11 +65,11 @@ t_list	parse_args(int argc, char **argv)
 	t_list	*stack;
 	int		i;
 
-	stack = NULL
+	stack = NULL;
 	i = 0;
 	while (i < argc)
 	{
-		if (!parse_strings(argv[i], &stack[i]))
+		if (!parse_strings(argv[i], &stack))
 		{
 			free(stack);
 			error_exit();
@@ -80,5 +78,5 @@ t_list	parse_args(int argc, char **argv)
 	}
 	if (!stack)
 		error_exit();
-	return (stack)
+	return (stack);
 }
