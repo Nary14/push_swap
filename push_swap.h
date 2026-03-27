@@ -40,6 +40,7 @@ int		has_duplicate(t_node *stack, int value);
 
 t_node	*new_node(int value);
 void	add_back(t_node **stack, t_node *new_n);
+void  add_front(t_node **stack, t_node *new_n);
 int		stack_size(t_node *stack);
 int		is_sorted(t_node *stack);
 void	free_stack(t_node **stack);

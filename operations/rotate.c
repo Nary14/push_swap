@@ -11,33 +11,36 @@
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-void rotate_stack (t_list **stack)
+void rotate_stack (t_node **stack)
 {
-    t_list *temp;
+    int *temp;
 
     if (!stack || !*stack)
         return ; 
     temp = *stack;
     *stack = temp->next;
     temp->next = NULL;
-    ft_listadd_back(stack, temp);
+    add_back(stack, temp);
 }
 
-void ra (t_list **stack_a)
+void	ra(t_node **a, int print)
 {
     rotate_stack(stack_a);
-    ft_putstr_fd("ra\n", 1);
+    if (print)
+      ft_putstr_fd("ra\n", 1);
 }
 
-void rb (t_list **stack_b)
+void	rb(t_node **b, int print)
 {
     rotate_stack(stack_b);
-    ft_putstr_fd("rb\n", 1);
+    if (print)
+      ft_putstr_fd("rb\n", 1);
 }
 
-void rr (t_list **stack_a, t_list **stack_b)
+void	rr(t_node **a, t_node **b, int print)
 {
     rotate_stack(stack_a);
     rotate_stack(stack_b);
-    ft_putstr_fd("rr\n", 1);
+    if (print)
+      ft_putstr_fd("rr\n", 1);
 }
