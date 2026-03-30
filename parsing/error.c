@@ -3,20 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: traomeli <traomeli@student.42antananari    +#+  +:+       +#+        */
+/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 05:55:20 by marasolo          #+#    #+#             */
-/*   Updated: 2026/03/25 07:56:35 by traomeli         ###   ########.fr       */
+/*   Updated: 2026/03/29 17:30:03 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-#include <unistd.h>
 
-#include <stdlib.h>
-#include <stdio.h>
-
-int	valid_number(char *str)
+int	is_valid_int(const char *str)
 {
 	int i;
 	
@@ -34,32 +30,22 @@ int	valid_number(char *str)
 	return (1);
 }
 
-int	duplicat(t_list *stack, int valu)
+int	has_duplicate(t_node *stack, int value)
 {
-	t_list	*tmp;
-	int		*count;
+	t_node	*tmp;
 
 	tmp = stack;
 	while (tmp)
 	{
-		count = (int *)tmp->content;
-		if (*count == valu)
+		if (tmp->value == value)
 			return (1);
 		tmp = tmp->next;
 	}
 	return (0);
 }
 
-void	error_exit(void)
+void	ft_error(void)
 {
-	write(1, "error\n",5);
+	write(2, "Error\n", 6);
 	exit(EXIT_FAILURE);
 }
-
-// int main(void)
-// {
-// 	error_exit();
-// 	printf("%d\n", valid_number("6"));
-// 	printf("%d\n", duplicat("sadf", '1'));
-// 	printf("%d\n", ft_atoi("-54485"));
-// }

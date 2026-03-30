@@ -3,64 +3,99 @@
 /*                                                        :::      ::::::::   */
 /*   simple_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
+/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 05:27:48 by marasolo          #+#    #+#             */
-/*   Updated: 2026/03/26 09:57:43 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/03/30 05:16:20 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-int find_min_index(t_list **stack)
+int find_min_index(t_node **stack)
 {
-    
-}
+    int     min_pos;
+    int     min_value;
+    int     pos;
+    t_node  *current;
 
-void	ft_simple_sort_2(t_list	**stack)
-{
-	int	*a;
-	int	*b;
-	
-	a = (int *)stack->content;
-	b = (int *)stack->next->content;
-	if (*a > *b)
-        sa(&stack);
-}
-
-void	ft_simple_sort_3(t_list **stack)
-{
-	int	*a;
-	int	*b;
-	int	*c;
-
-	a = (int *)stack->content;
-	b = (int *)stack->next->content;
-	c = (int *)stack->next->next->content;
-	if (*a > *b && *b < *c && *a < *c)
-        sa(&stack);
-	else if (*a > *b && *b > *c)
+    min_pos = 0;
+    min_value = INT_MAX;
+    pos = 0;
+    current = *stack;
+    while (current)
     {
-        sa(&stack);
-        rra(&stack);
+        if (current->value < min_value)
+        {
+            min_value = current->value;
+            min_pos = pos;
+        }
+        pos++;
+        current = current->next;
     }
-	else if (*a > *b && *b < *c && *a > *c)
-        ra(&stack);
-	else if (*a < *b && *b > *c && *a < *c)
-	{
-        sa(&stack);
-        ra(&stack);
-    }
-	else if (*a < *b && *b > *c && *a > *c)
-        rra(&stack);
+    return (min_pos);
 }
 
-void	ft_simple_sort_plus4(t_list **stack1, t_list **stack2, int size)
+void	ft_simple_sort_2(t_node	**stack)
 {
+	int	a;
+	int	b;
 
+	a = (*stack)->value;
+	b = (*stack)->next->value;
+	if (a > b)
+        sa(stack, 1);
 }
 
-void	ft_simple_sort(t_list **stack1, t_list **stack2, int size)
+void	ft_simple_sort_3(t_node **stack)
+{
+	int	a;
+	int	b;
+	int	c;
+
+	a = (*stack)->value;
+	b = (*stack)->next->value;
+	c = (*stack)->next->next->value;
+	if (a > b && b < c && a < c)
+        sa(stack, 1);
+	else if (a > b && b > c)
+    {
+        sa(stack, 1);
+        rra(stack, 1);
+    }
+	else if (a > b && b < c && a > c)
+        ra(stack, 1);
+	else if (a < b && b > c && a < c)
+	{
+        sa(stack, 1);
+        ra(stack, 1);
+    }
+	else if (a < b && b > c && a > c)
+        rra(stack, 1);
+}
+
+void ft_simple_sort_plus4(t_node **stack1, t_node **stack2, int size)
+{
+    int min_index;
+
+    while (size > 3)
+    {
+        min_index = find_min_index(stack1);
+        if (min_index < size / 2)
+            while (min_index-- > 0)
+                ra(stack1, 1);
+        else
+            while (min_index++ < size)
+                rra(stack1, 1);
+        pb(stack1, stack2, 1);
+        size--;
+    }
+    ft_simple_sort(stack1, stack2, size);
+    while (*stack2)
+        pa(stack1, stack2, 1);
+}
+
+void	ft_simple_sort(t_node **stack1, t_node **stack2, int size)
 {
 	if (size == 2)
 		ft_simple_sort_2(stack1);

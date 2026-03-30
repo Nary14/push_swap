@@ -3,44 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   adaptive_sort.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
+/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 10:39:29 by marasolo          #+#    #+#             */
-/*   Updated: 2026/03/26 10:51:42 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/03/30 06:16:34 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-int	sorted(t_list *stack)
+int	sorted(t_node *stack)
 {
-	int	*current;
-	int	*next;
-
 	if (!stack || !stack->next)
 		return (1);
 	while (stack->next)
 	{
-		current = (int *)stack->content;
-		next = (int *)stack->next->content;
-		if (*current > *next)
+		if (stack->value > stack->next->value)
 			return (0);
 		stack = stack->next;
 	}
 	return (1);
 }
 
-void	adaptive_sort(t_list **stack1, t_list **stack2)
+void	adaptive_sort(t_node **stack1, t_node **stack2)
 {
 	int	size;
+	int	chunks;
 
-	size = ft_lstsize(*stack1);
-	if (!sorted(*stack1))
+	size = stack_size(*stack1);
+	if (sorted(*stack1))
 		return ;
 	if (size <= 5)
-		simple_sort(stack1, stack2, size);
+		ft_simple_sort(stack1, stack2, size);
 	else if (size <= 100)
-		chunk_sort(stack1, stack2, size);
+	{
+		chunks = size / 11;
+		if (chunks < 1)
+			chunks = 1;
+		ft_chunk_sort(stack1, stack2, chunks);
+	}
 	else
-		radix_sort(stack1, stack2, size);
+		ft_radix_sort(stack1, stack2);
 }

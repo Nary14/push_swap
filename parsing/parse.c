@@ -3,43 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: traomeli <traomeli@student.42antananari    +#+  +:+       +#+        */
+/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 09:55:37 by marasolo          #+#    #+#             */
-/*   Updated: 2026/03/25 09:21:16 by traomeli         ###   ########.fr       */
+/*   Updated: 2026/03/29 17:31:30 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-int	process_number(char	*str, t_list **stack)
+int	process_number(char	*str, t_node **stack)
 {
 	long int	num;
-	int			*content;
-	t_list		*new_node;
-	
-	if (!valid_number(str))
+	t_node		*node;
+
+	if (!is_valid_int(str))
 		return (0);
-	num = ft_atoi(str);
+	num = ft_atol(str);
 	if (num < INT_MIN || num > INT_MAX)
 		return (0);
-	if (duplicat(*stack, (int)num))
+	if (has_duplicate(*stack, (int)num))
 		return (0);
-	content = malloc(sizeof(int));
-	if (!content)
+	node = new_node((int)num);
+	if (!node)
 		return (0);
-	*content = (int)num;
-	new_node = ft_lstnew(content);
-	if (!content)
-	{
-		free(content);
-		return (0);
-	}
-	ft_lstadd_back(stack, new_node);
+	add_back(stack, node);
 	return (1);
 }
 
-int	parse_strings(char *str, t_list **stack)
+int	parse_strings(char *str, t_node **stack)
 {
 	char	**split;
 	int		i;
@@ -60,23 +52,23 @@ int	parse_strings(char *str, t_list **stack)
 	return (result);
 }
 
-t_list	parse_args(int argc, char **argv)
+void parse_args(int argc, char **argv, t_node **a)
 {
-	t_list	*stack;
+	t_node	*stack;
 	int		i;
 
 	stack = NULL;
-	i = 0;
+	i = 1;
 	while (i < argc)
 	{
 		if (!parse_strings(argv[i], &stack))
 		{
-			free(stack);
-			error_exit();
+			free_stack(&stack);
+			ft_error();
 		}
 		i++;
 	}
 	if (!stack)
-		error_exit();
-	return (stack);
+		ft_error();
+	*a = stack;
 }
