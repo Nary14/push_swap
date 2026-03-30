@@ -6,7 +6,7 @@
 /*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 04:19:50 by traomeli          #+#    #+#             */
-/*   Updated: 2026/03/30 22:03:39 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/03/30 22:33:09 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,15 +85,48 @@ static int	pos_of_max(t_node *s)
 	return (maxpos);
 }
 
+static void	push_chunks(t_node **a, t_node **b, int *s, int cs)
+{
+	int	chunk;
+	int	low;
+	int	high;
+	int	pos;
+
+	chunk = 0;
+	while (chunk * cs < stack_size(*a))
+	{
+		low = chunk * cs;
+		high = low + cs - 1;
+		if (high >= stack_size(*a))
+			high = stack_size(*a) - 1;
+		pos = pos_of_first_in_range(*a, s[low], s[high]);
+		while (pos != -1 && *a)
+		{
+			rotate_to_top_a(a, pos);
+			pb(a, b, 1);
+			pos = pos_of_first_in_range(*a, s[low], s[high]);
+		}
+		chunk++;
+	}
+}
+
+static void	push_back(t_node **a, t_node **b)
+{
+	int	pos;
+
+	while (*b)
+	{
+		pos = pos_of_max(*b);
+		rotate_to_top_b(b, pos);
+		pa(a, b, 1);
+	}
+}
+
 void	ft_chunk_sort(t_node **a, t_node **b, int chunks)
 {
 	int	size;
-	int	chunk;
 	int	chunk_size;
 	int	*sorted;
-	int	low_idx;
-	int	high_idx;
-	int	pos;
 
 	if (!a || !*a || chunks <= 0)
 		return ;
@@ -104,27 +137,7 @@ void	ft_chunk_sort(t_node **a, t_node **b, int chunks)
 	chunk_size = size / chunks;
 	if (chunk_size == 0)
 		chunk_size = 1;
-	chunk = 0;
-	while (chunk < chunks)
-	{
-		low_idx = chunk * chunk_size;
-		high_idx = low_idx + chunk_size - 1;
-		if (high_idx >= size)
-			high_idx = size - 1;
-		pos = pos_of_first_in_range(*a, sorted[low_idx], sorted[high_idx]);
-		while (pos != -1 && *a)
-		{
-			rotate_to_top_a(a, pos);
-			pb(a, b, 1);
-			pos = pos_of_first_in_range(*a, sorted[low_idx], sorted[high_idx]);
-		}
-		chunk++;
-	}
+	push_chunks(a, b, sorted, chunk_size);
 	free(sorted);
-	while (*b)
-	{
-		pos = pos_of_max(*b);
-		rotate_to_top_b(b, pos);
-		pa(a, b, 1);
-	}
+	push_back(a, b);
 }
