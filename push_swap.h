@@ -6,7 +6,7 @@
 /*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 07:51:56 by traomeli          #+#    #+#             */
-/*   Updated: 2026/03/30 22:13:14 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/03/30 22:42:06 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,8 @@ void				ft_radix_sort(t_node **a, t_node **b);
 void				ft_adaptive_sort(t_node **stack1, t_node **stack2);
 
 void				push_swap(t_node **a, t_node **b);
+
+int					pos_of_first_in_range(t_node *a, int lowv, int highv);
+int					pos_of_max(t_node *s);
 
 #endif

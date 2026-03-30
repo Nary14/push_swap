@@ -6,7 +6,7 @@
 /*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 04:19:50 by traomeli          #+#    #+#             */
-/*   Updated: 2026/03/30 22:33:09 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/03/30 22:40:35 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,45 +44,6 @@ static int	*sorted_array(t_node *a, int size)
 	}
 	qsort(arr, size, sizeof(int), cmp_int);
 	return (arr);
-}
-
-static int	pos_of_first_in_range(t_node *a, int lowv, int highv)
-{
-	int	pos;
-
-	pos = 0;
-	while (a)
-	{
-		if (a->value >= lowv && a->value <= highv)
-			return (pos);
-		pos++;
-		a = a->next;
-	}
-	return (-1);
-}
-
-static int	pos_of_max(t_node *s)
-{
-	int	pos;
-	int	max;
-	int	maxpos;
-
-	if (!s)
-		return (-1);
-	max = s->value;
-	pos = 0;
-	maxpos = 0;
-	while (s)
-	{
-		if (s->value > max)
-		{
-			max = s->value;
-			maxpos = pos;
-		}
-		pos++;
-		s = s->next;
-	}
-	return (maxpos);
 }
 
 static void	push_chunks(t_node **a, t_node **b, int *s, int cs)
