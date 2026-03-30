@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
+/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 07:51:56 by traomeli          #+#    #+#             */
-/*   Updated: 2026/03/30 04:31:37 by traomeli         ###   ########.fr       */
+/*   Updated: 2026/03/30 11:03:14 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,10 @@ void				rrb(t_node **b, int print);
 void				rrr(t_node **a, t_node **b, int print);
 
 void				assign_index(t_node *a);
-void				ft_simple_sort_2(t_node **a);
-void				ft_simple_sort_3(t_node **a);
-void				ft_simple_sort_plus4(t_node **a, t_node **b, int size);
 void				ft_simple_sort(t_node **a, t_node **b, int size);
 void				ft_chunk_sort(t_node **a, t_node **b, int chunks);
 void				ft_radix_sort(t_node **a, t_node **b);
-void				adaptive_sort(t_node **stack1, t_node **stack2);
+void				ft_adaptive_sort(t_node **stack1, t_node **stack2);
 
 void				push_swap(t_node **a, t_node **b);
 

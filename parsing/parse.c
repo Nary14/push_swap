@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
+/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 09:55:37 by marasolo          #+#    #+#             */
-/*   Updated: 2026/03/29 17:31:30 by traomeli         ###   ########.fr       */
+/*   Updated: 2026/03/30 10:45:00 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	parse_strings(char *str, t_node **stack)
 	return (result);
 }
 
-void parse_args(int argc, char **argv, t_node **a)
+void	parse_args(int argc, char **argv, t_node **a)
 {
 	t_node	*stack;
 	int		i;

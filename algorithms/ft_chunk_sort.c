@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   chunk_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
+/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 04:19:50 by traomeli          #+#    #+#             */
-/*   Updated: 2026/03/30 06:14:40 by traomeli         ###   ########.fr       */
+/*   Updated: 2026/03/30 10:30:35 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,13 +119,13 @@ static void	rotate_to_top_b(t_node **b, int pos)
 
 void	ft_chunk_sort(t_node **a, t_node **b, int chunks)
 {
-	int size;
-	int chunk;
-	int chunk_size;
-	int *sorted;
-	int low_idx;
-	int high_idx;
-	int pos;
+	int	size;
+	int	chunk;
+	int	chunk_size;
+	int	*sorted;
+	int	low_idx;
+	int	high_idx;
+	int	pos;
 
 	if (!a || !*a || chunks <= 0)
 		return ;

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   adaptive_sort.c                                    :+:      :+:    :+:   */
+/*   ft_adaptive_sort.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
+/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 10:39:29 by marasolo          #+#    #+#             */
-/*   Updated: 2026/03/30 06:16:34 by traomeli         ###   ########.fr       */
+/*   Updated: 2026/03/30 11:02:56 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	sorted(t_node *stack)
+static int	sorted(t_node *stack)
 {
 	if (!stack || !stack->next)
 		return (1);
@@ -25,7 +25,7 @@ int	sorted(t_node *stack)
 	return (1);
 }
 
-void	adaptive_sort(t_node **stack1, t_node **stack2)
+void	ft_adaptive_sort(t_node **stack1, t_node **stack2)
 {
 	int	size;
 	int	chunks;

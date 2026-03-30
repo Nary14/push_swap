@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
+/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 08:28:36 by traomeli          #+#    #+#             */
-/*   Updated: 2026/03/30 05:14:33 by traomeli         ###   ########.fr       */
+/*   Updated: 2026/03/30 10:39:32 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	push(t_node **stack_a, t_node **stack_b)
 {
 	t_node	*temp;
-	t_node *next;
+	t_node	*next;
 
 	if (stack_a == NULL || *stack_a == NULL)
 		return ;

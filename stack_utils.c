@@ -3,81 +3,84 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
+/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 10:59:38 by traomeli          #+#    #+#             */
-/*   Updated: 2026/03/29 14:27:10 by traomeli         ###   ########.fr       */
+/*   Updated: 2026/03/30 10:24:55 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void add_front(t_node **stack, t_node *temp)
+void	add_front(t_node **stack, t_node *temp)
 {
-  temp->next = *stack;
-  *stack = temp;
+	temp->next = *stack;
+	*stack = temp;
 }
 
-void add_back(t_node **stack, t_node *temp)
+void	add_back(t_node **stack, t_node *temp)
 {
-  t_node *l;
-  if (*stack == NULL)
+	t_node	*l;
+
+	if (*stack == NULL)
 	{
 		*stack = temp;
 		return ;
 	}
-  l = *stack;
-  while (l->next != NULL)
+	l = *stack;
+	while (l->next != NULL)
 		l = l->next;
-  l->next = temp;
+	l->next = temp;
 }
 
 t_node	*new_node(int value)
 {
-  t_node *mall;
-  mall = malloc(sizeof(t_node));
-  if (!mall)
-    return (NULL);
-  mall->value = value;
-  mall->index = 0;
-  mall->next = NULL;
-  return (mall);
+	t_node	*mall;
+
+	mall = malloc(sizeof(t_node));
+	if (!mall)
+		return (NULL);
+	mall->value = value;
+	mall->index = 0;
+	mall->next = NULL;
+	return (mall);
 }
 
-int stack_size(t_node *stack)
+int	stack_size(t_node *stack)
 {
-  int count;
+	int	count;
 
-  count = 0;
-  while (stack != NULL)
-  {
-    count ++;
-    stack = stack->next;
-  }
-  return (count);
+	count = 0;
+	while (stack != NULL)
+	{
+		count ++;
+		stack = stack->next;
+	}
+	return (count);
 }
 
-int is_sorted(t_node *stack)
+int	is_sorted(t_node *stack)
 {
-  while (stack && stack->next)
-  {
-    if (stack->value > stack->next->value)
-      return (0);
-    stack = stack->next;
-  }
-  return (1);
+	while (stack && stack->next)
+	{
+		if (stack->value > stack->next->value)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
 }
 
-void free_stack(t_node **stack)
+void	free_stack(t_node **stack)
 {
-  t_node *lig;
+	t_node	*lig;
+	t_node	*temp;
 
-  lig = *stack;
-  while (lig != NULL)
-  {
-    t_node *temp = lig;
-    lig = lig->next;
-    free(temp);
-  }
-  *stack = NULL;
+	lig = *stack;
+	while (lig != NULL)
+	{
+		temp = lig;
+		lig = lig->next;
+		free(temp);
+	}
+	*stack = NULL;
 }

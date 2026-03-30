@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
+/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 05:55:20 by marasolo          #+#    #+#             */
-/*   Updated: 2026/03/29 17:30:03 by traomeli         ###   ########.fr       */
+/*   Updated: 2026/03/30 10:42:34 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	is_valid_int(const char *str)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	if (str[i] == '-' || str[i] == '+')
 		i++;

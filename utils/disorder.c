@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   disorder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
+/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 14:58:58 by traomeli          #+#    #+#             */
-/*   Updated: 2026/03/30 05:59:26 by traomeli         ###   ########.fr       */
+/*   Updated: 2026/03/30 10:52:38 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	assign_index(t_node *a)
 
 long	ft_atol(const char *str)
 {
-	long result;
-	int sign;
+	long	result;
+	int		sign;
 
 	result = 0;
 	sign = 1;
@@ -52,7 +52,9 @@ long	ft_atol(const char *str)
 	while (ft_isdigit(*str))
 	{
 		if (result > (LONG_MAX - (*str - '0')) / 10)
-			return (sign == 1 ? LONG_MAX : LONG_MIN);
+			return (sign == 1);
+		else
+			return (LONG_MIN);
 		result = result * 10 + (*str - '0');
 		str++;
 	}
