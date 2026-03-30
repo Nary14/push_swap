@@ -6,7 +6,7 @@
 /*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 10:59:38 by traomeli          #+#    #+#             */
-/*   Updated: 2026/03/30 10:24:55 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/03/30 22:08:45 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,19 +46,6 @@ t_node	*new_node(int value)
 	return (mall);
 }
 
-int	stack_size(t_node *stack)
-{
-	int	count;
-
-	count = 0;
-	while (stack != NULL)
-	{
-		count ++;
-		stack = stack->next;
-	}
-	return (count);
-}
-
 int	is_sorted(t_node *stack)
 {
 	while (stack && stack->next)
@@ -68,19 +55,4 @@ int	is_sorted(t_node *stack)
 		stack = stack->next;
 	}
 	return (1);
-}
-
-void	free_stack(t_node **stack)
-{
-	t_node	*lig;
-	t_node	*temp;
-
-	lig = *stack;
-	while (lig != NULL)
-	{
-		temp = lig;
-		lig = lig->next;
-		free(temp);
-	}
-	*stack = NULL;
 }

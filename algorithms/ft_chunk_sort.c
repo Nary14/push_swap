@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   chunk_sort.c                                       :+:      :+:    :+:   */
+/*   ft_chunk_sort.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 04:19:50 by traomeli          #+#    #+#             */
-/*   Updated: 2026/03/30 10:30:35 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/03/30 22:03:39 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,22 +61,6 @@ static int	pos_of_first_in_range(t_node *a, int lowv, int highv)
 	return (-1);
 }
 
-static void	rotate_to_top_a(t_node **a, int pos)
-{
-	int	sz;
-
-	sz = stack_size(*a);
-	if (pos <= sz / 2)
-		while (pos-- > 0)
-			ra(a, 1);
-	else
-	{
-		pos = sz - pos;
-		while (pos-- > 0)
-			rra(a, 1);
-	}
-}
-
 static int	pos_of_max(t_node *s)
 {
 	int	pos;
@@ -99,22 +83,6 @@ static int	pos_of_max(t_node *s)
 		s = s->next;
 	}
 	return (maxpos);
-}
-
-static void	rotate_to_top_b(t_node **b, int pos)
-{
-	int	sz;
-
-	sz = stack_size(*b);
-	if (pos <= sz / 2)
-		while (pos-- > 0)
-			rb(b, 1);
-	else
-	{
-		pos = sz - pos;
-		while (pos-- > 0)
-			rrb(b, 1);
-	}
 }
 
 void	ft_chunk_sort(t_node **a, t_node **b, int chunks)

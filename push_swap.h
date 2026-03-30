@@ -6,7 +6,7 @@
 /*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 07:51:56 by traomeli          #+#    #+#             */
-/*   Updated: 2026/03/30 11:03:14 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/03/30 22:13:14 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ int					stack_size(t_node *stack);
 int					is_sorted(t_node *stack);
 
 void				free_stack(t_node **stack);
+
+void				rotate_to_top_a(t_node **a, int pos);
+void				rotate_to_top_b(t_node **b, int pos);
 
 void				sa(t_node **a, int print);
 void				sb(t_node **b, int print);
