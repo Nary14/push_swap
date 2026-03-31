@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
+/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 09:55:37 by marasolo          #+#    #+#             */
-/*   Updated: 2026/03/30 10:45:00 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/03/31 21:21:10 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ int	parse_strings(char *str, t_node **stack)
 	split = ft_split(str, ' ');
 	if (!split)
 		return (0);
+	if (!split[0])
+	{
+		free(split);
+		return (0);
+	}
 	i = 0;
 	result = 1;
 	while (split[i])

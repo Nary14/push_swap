@@ -12,6 +12,7 @@ SRCS = push_swap.c parsing/error.c parsing/parse.c \
        utils/libft_42/ft_split.c utils/libft_42/ft_atoi.c \
        utils/libft_42/ft_putstr_fd.c utils/libft_42/ft_isdigit.c \
        utils/libft_42/ft_strlen.c utils/libft_42/ft_lstnew.c \
+       utils/libft_42/ft_strncmp.c \
        utils/libft_42/ft_lstadd_back.c utils/libft_42/ft_lstlast.c \
        utils/libft_42/ft_lstsize.c utils/libft_42/ft_lstclear.c \
        utils/libft_42/ft_calloc.c utils/libft_42/ft_bzero.c \
