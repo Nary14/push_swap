@@ -3,10 +3,12 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 SRCS = push_swap.c parsing/error.c parsing/parse.c \
        utils/disorder.c stack_utils.c \
+       rotate_to_top_a_b.c stack.c \
        operations/push.c operations/swap.c \
        operations/rotate.c operations/reverse_rotate.c \
-       algorithms/adaptive_sort.c algorithms/simple_sort.c \
-       algorithms/radix_sort.c algorithms/chunk_sort.c \
+       algorithms/ft_adaptive_sort.c algorithms/ft_simple_sort.c \
+       algorithms/ft_radix_sort.c algorithms/ft_chunk_sort.c \
+       algorithms/ft_chunk_utils.c \
        utils/libft_42/ft_split.c utils/libft_42/ft_atoi.c \
        utils/libft_42/ft_putstr_fd.c utils/libft_42/ft_isdigit.c \
        utils/libft_42/ft_strlen.c utils/libft_42/ft_lstnew.c \

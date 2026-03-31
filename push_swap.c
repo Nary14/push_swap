@@ -6,7 +6,7 @@
 /*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 06:20:35 by traomeli          #+#    #+#             */
-/*   Updated: 2026/03/30 10:06:55 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/03/30 23:34:22 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	push_swap(t_node **a, t_node **b)
 	if (!a || !*a)
 		return ;
 	assign_index(*a);
-	adaptive_sort(a, b);
+	ft_adaptive_sort(a, b);
 }
 
 int	main(int argc, char **argv)
