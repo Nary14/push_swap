@@ -6,7 +6,7 @@
 /*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 07:51:56 by traomeli          #+#    #+#             */
-/*   Updated: 2026/04/01 08:25:32 by traomeli         ###   ########.fr       */
+/*   Updated: 2026/04/01 09:23:02 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,26 @@ void				push_swap(t_node **a, t_node **b);
 
 int					pos_of_first_in_range(t_node *a, int lowv, int highv);
 int					pos_of_max(t_node *s);
+
+extern int g_bench;
+
+extern long g_sa;
+extern long g_sb;
+extern long g_ss;
+extern long g_pa;
+extern long g_pb;
+extern long g_ra;
+extern long g_rb;
+extern long g_rr;
+extern long g_rra;
+extern long g_rrb;
+extern long g_rrr;
+
+extern char *g_strategy_name;
+extern char *g_strategy_complexity;
+
+void		bench_log(char *op, int print);
+double		compute_disorder(t_node *a);
+void		bench_print_summary(double disorder);
 
 #endif

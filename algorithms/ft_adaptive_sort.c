@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_adaptive_sort.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
+/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 10:39:29 by marasolo          #+#    #+#             */
-/*   Updated: 2026/03/30 11:02:56 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/04/01 08:51:43 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

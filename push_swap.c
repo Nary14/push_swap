@@ -6,7 +6,7 @@
 /*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 06:20:35 by traomeli          #+#    #+#             */
-/*   Updated: 2026/04/01 08:25:50 by traomeli         ###   ########.fr       */
+/*   Updated: 2026/04/01 09:56:03 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,17 +120,54 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 
-	assign_index(a);
-	if (mode == 1)
-		ft_simple_sort(&a, &b, stack_size(a));
-	else if (mode == 2)
-		ft_chunk_sort(&a, &b, 5);
-	else if (mode == 3)
-		ft_radix_sort(&a, &b);
-	else
-		ft_adaptive_sort(&a, &b);
-	(void)bench;
+	/* compute disorder and enable bench globals */
+	{
+		double	disorder;
+		int	size;
+		disorder = compute_disorder(a);
+		g_bench = bench;
+		/* determine strategy name and complexity */
+		size = stack_size(a);
+		if (mode == 1)
+		{
+			g_strategy_name = "Simple";
+			g_strategy_complexity = "O(n^2)";
+		}
+		else if (mode == 2)
+		{
+			g_strategy_name = "Chunk";
+			g_strategy_complexity = "O(n\u221An)";
+		}
+		else if (mode == 3)
+		{
+			g_strategy_name = "Radix";
+			g_strategy_complexity = "O(n log n)";
+		}
+		else /* adaptive */
+		{
+			g_strategy_name = "Adaptive";
+			if (size <= 5)
+				g_strategy_complexity = "O(n^2)";
+			else if (size <= 100)
+				g_strategy_complexity = "O(n\u221An)";
+			else
+				g_strategy_complexity = "O(n log n)";
+		}
 
+		assign_index(a);
+		if (mode == 1)
+			ft_simple_sort(&a, &b, stack_size(a));
+		else if (mode == 2)
+			ft_chunk_sort(&a, &b, 5);
+		else if (mode == 3)
+			ft_radix_sort(&a, &b);
+		else
+			ft_adaptive_sort(&a, &b);
+
+		if (g_bench)
+			bench_print_summary(disorder);
+	}
+	
 	free_stack(&a);
 	free_stack(&b);
 	return (0);

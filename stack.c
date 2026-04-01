@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
+/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 22:07:57 by marasolo          #+#    #+#             */
-/*   Updated: 2026/03/30 22:11:11 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/04/01 08:52:50 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

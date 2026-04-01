@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   disorder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
+/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 14:58:58 by traomeli          #+#    #+#             */
-/*   Updated: 2026/03/30 10:52:38 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/04/01 09:12:37 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,32 @@ long	ft_atol(const char *str)
 		str++;
 	}
 	return (result * sign);
+}
+
+double	compute_disorder(t_node *a)
+{
+	long	inversions;
+	int	n;
+	t_node	*cur;
+	t_node	*runner;
+
+	inversions = 0;
+	n = 0;
+	cur = a;
+	while (cur)
+	{
+		runner = cur->next;
+		while (runner)
+		{
+			if (cur->value > runner->value)
+				inversions++;
+			runner = runner->next;
+		}
+		n++;
+		cur = cur->next;
+	}
+	if (n < 2)
+		return (0.0);
+	/* max inversions = n*(n-1)/2 */
+	return ((double)inversions / ((double)n * (n - 1) / 2.0));
 }

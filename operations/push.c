@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
+/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 08:28:36 by traomeli          #+#    #+#             */
-/*   Updated: 2026/03/30 10:39:32 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/04/01 09:12:37 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ void	pa(t_node **a, t_node **b, int print)
 {
 	push(b, a);
 	if (print)
-		ft_putstr_fd("pa\n", 1);
+		bench_log("pa\n", 1);
 }
 
 void	pb(t_node **a, t_node **b, int print)
 {
 	push(a, b);
 	if (print)
-		ft_putstr_fd("pb\n", 1);
+		bench_log("pb\n", 1);
 }

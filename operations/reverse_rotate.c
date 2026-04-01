@@ -6,7 +6,7 @@
 /*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 06:46:26 by traomeli          #+#    #+#             */
-/*   Updated: 2026/03/30 05:00:38 by traomeli         ###   ########.fr       */
+/*   Updated: 2026/04/01 09:12:37 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@ void	rra(t_node **a, int print)
 {
 	reverse_rotate_stack(a);
 	if (print)
-		ft_putstr_fd("rra\n", 1);
+		bench_log("rra\n", 1);
 }
 
 void	rrb(t_node **b, int print)
 {
 	reverse_rotate_stack(b);
 	if (print)
-		ft_putstr_fd("rrb\n", 1);
+		bench_log("rrb\n", 1);
 }
 
 void	rrr(t_node **a, t_node **b, int print)
@@ -46,5 +46,5 @@ void	rrr(t_node **a, t_node **b, int print)
 	reverse_rotate_stack(a);
 	reverse_rotate_stack(b);
 	if (print)
-		ft_putstr_fd("rrr\n", 1);
+		bench_log("rrr\n", 1);
 }

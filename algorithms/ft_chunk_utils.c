@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_chunk_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
+/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 22:38:33 by marasolo          #+#    #+#             */
-/*   Updated: 2026/03/30 23:34:42 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/04/01 08:51:51 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

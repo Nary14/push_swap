@@ -1,7 +1,7 @@
 NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-SRCS = push_swap.c parsing/error.c parsing/parse.c \
+SRCS = push_swap.c bench.c parsing/error.c parsing/parse.c \
        utils/disorder.c stack_utils.c \
        rotate_to_top_a_b.c stack.c \
        operations/push.c operations/swap.c \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_to_top_a_b.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
+/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 22:02:51 by marasolo          #+#    #+#             */
-/*   Updated: 2026/03/30 22:14:49 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/04/01 08:52:44 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
