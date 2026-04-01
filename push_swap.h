@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
+/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 07:51:56 by traomeli          #+#    #+#             */
-/*   Updated: 2026/03/30 22:42:06 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/04/01 08:25:32 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,12 @@ typedef struct s_node
 }					t_node;
 
 void				ft_error(void);
+void				ft_error_exit(void);
 long				ft_atol(const char *str);
 
 int					ft_isdigit(int c);
 
-void				parse_args(int argc, char **argv, t_node **a);
+int					parse_args(int argc, char **argv, t_node **a);
 int					is_valid_int(const char *s);
 
 int					has_duplicate(t_node *stack, int value);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
+/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 05:55:20 by marasolo          #+#    #+#             */
-/*   Updated: 2026/03/30 10:42:34 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/04/01 08:28:51 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,18 @@ int	has_duplicate(t_node *stack, int value)
 	return (0);
 }
 
-void	ft_error(void)
+void	print_error(void)
 {
 	write(2, "Error\n", 6);
-	exit(EXIT_FAILURE);
+}
+
+void	ft_error(void)
+{
+	print_error();
+}
+
+void	ft_error_exit(void)
+{
+	print_error();
+	_exit(EXIT_FAILURE);
 }

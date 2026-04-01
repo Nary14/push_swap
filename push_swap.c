@@ -6,7 +6,7 @@
 /*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 06:20:35 by traomeli          #+#    #+#             */
-/*   Updated: 2026/04/01 07:17:07 by traomeli         ###   ########.fr       */
+/*   Updated: 2026/04/01 08:25:50 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,17 +68,33 @@ int	main(int argc, char **argv)
 				strategy_count++;
 			}
 			else
-				ft_error();
+				ft_error_exit();
 		}
 		i++;
 	}
 
 	if (strategy_count > 1)
-		ft_error();
+		ft_error_exit();
+	{
+		int	has_numbers;
+		has_numbers = 0;
+		i = 1;
+		while (i < argc)
+		{
+			if (!(ft_strncmp(argv[i], "--", 2) == 0))
+			{
+				has_numbers = 1;
+				break;
+			}
+			i++;
+		}
+		if (!has_numbers)
+			ft_error_exit();
+	}
 
 	new_argv = malloc(sizeof(char *) * (argc + 1));
 	if (!new_argv)
-		ft_error();
+		ft_error_exit();
 	new_argc = 1;
 	new_argv[0] = argv[0];
 	i = 1;
@@ -92,7 +108,11 @@ int	main(int argc, char **argv)
 	}
 	new_argv[new_argc] = NULL;
 
-	parse_args(new_argc, new_argv, &a);
+	if (!parse_args(new_argc, new_argv, &a))
+	{
+		free(new_argv);
+		ft_error_exit();
+	}
 	free(new_argv);
 	if (is_sorted(a))
 	{

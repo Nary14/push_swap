@@ -6,7 +6,7 @@
 /*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 09:55:37 by marasolo          #+#    #+#             */
-/*   Updated: 2026/03/31 21:48:00 by traomeli         ###   ########.fr       */
+/*   Updated: 2026/04/01 08:25:32 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	parse_strings(char *str, t_node **stack)
 	return (result);
 }
 
-void	parse_args(int argc, char **argv, t_node **a)
+int	parse_args(int argc, char **argv, t_node **a)
 {
 	t_node	*stack;
 	int		i;
@@ -70,11 +70,12 @@ void	parse_args(int argc, char **argv, t_node **a)
 		if (!parse_strings(argv[i], &stack))
 		{
 			free_stack(&stack);
-			ft_error();
+			return (0);
 		}
 		i++;
 	}
 	if (!stack)
-		ft_error();
+		return (0);
 	*a = stack;
+	return (1);
 }
