@@ -1,7 +1,7 @@
 NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-SRCS = push_swap.c bench.c parsing/error.c parsing/parse.c \
+SRCS = push_swap.c push_swap_utils.c bench.c bench_print.c parsing/error.c parsing/parse.c \
        utils/disorder.c stack_utils.c \
        rotate_to_top_a_b.c stack.c \
        operations/push.c operations/swap.c \
@@ -10,7 +10,9 @@ SRCS = push_swap.c bench.c parsing/error.c parsing/parse.c \
        algorithms/ft_radix_sort.c algorithms/ft_chunk_sort.c \
        algorithms/ft_chunk_utils.c \
        utils/libft_42/ft_split.c utils/libft_42/ft_atoi.c \
-       utils/libft_42/ft_putstr_fd.c utils/libft_42/ft_isdigit.c \
+       utils/libft_42/ft_putstr_fd.c utils/libft_42/ft_putchar_fd.c \
+       utils/libft_42/ft_putendl_fd.c utils/libft_42/ft_putnbr_fd.c \
+       utils/libft_42/ft_isdigit.c \
        utils/libft_42/ft_strlen.c utils/libft_42/ft_lstnew.c \
        utils/libft_42/ft_strncmp.c \
        utils/libft_42/ft_lstadd_back.c utils/libft_42/ft_lstlast.c \

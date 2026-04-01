@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_chunk_sort.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
+/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 04:19:50 by traomeli          #+#    #+#             */
-/*   Updated: 2026/04/01 07:26:54 by traomeli         ###   ########.fr       */
+/*   Updated: 2026/04/01 19:13:33 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	*sorted_array(t_node *a, int size)
 	return (arr);
 }
 
-static void	push_chunks(t_node **a, t_node **b, int *s, int cs, int total_size)
+static void	push_chunks(t_node **a, t_node **b, t_chunk *c)
 {
 	int	chunk;
 	int	low;
@@ -54,18 +54,18 @@ static void	push_chunks(t_node **a, t_node **b, int *s, int cs, int total_size)
 	int	pos;
 
 	chunk = 0;
-	while (chunk * cs < total_size)
+	while (chunk * c->cs < c->total_size)
 	{
-		low = chunk * cs;
-		high = low + cs - 1;
-		if (high >= total_size)
-			high = total_size - 1;
-		pos = pos_of_first_in_range(*a, s[low], s[high]);
+		low = chunk * c->cs;
+		high = low + c->cs - 1;
+		if (high >= c->total_size)
+			high = c->total_size - 1;
+		pos = pos_of_first_in_range(*a, c->s[low], c->s[high]);
 		while (pos != -1 && *a)
 		{
 			rotate_to_top_a(a, pos);
 			pb(a, b, 1);
-			pos = pos_of_first_in_range(*a, s[low], s[high]);
+			pos = pos_of_first_in_range(*a, c->s[low], c->s[high]);
 		}
 		chunk++;
 	}
@@ -85,9 +85,10 @@ static void	push_back(t_node **a, t_node **b)
 
 void	ft_chunk_sort(t_node **a, t_node **b, int chunks)
 {
-	int	size;
-	int	chunk_size;
-	int	*sorted;
+	int		size;
+	int		chunk_size;
+	int		*sorted;
+	t_chunk	c;
 
 	if (!a || !*a || chunks <= 0)
 		return ;
@@ -98,7 +99,10 @@ void	ft_chunk_sort(t_node **a, t_node **b, int chunks)
 	chunk_size = size / chunks;
 	if (chunk_size == 0)
 		chunk_size = 1;
-	push_chunks(a, b, sorted, chunk_size, size);
+	c.s = sorted;
+	c.cs = chunk_size;
+	c.total_size = size;
+	push_chunks(a, b, &c);
 	free(sorted);
 	push_back(a, b);
 }
