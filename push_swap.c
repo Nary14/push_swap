@@ -6,7 +6,7 @@
 /*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 06:20:35 by traomeli          #+#    #+#             */
-/*   Updated: 2026/03/31 21:48:03 by traomeli         ###   ########.fr       */
+/*   Updated: 2026/04/01 07:17:07 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,12 @@ int	main(int argc, char **argv)
 {
 	t_node	*a;
 	t_node	*b;
-	int		i;
-	int		bench;
-	int		mode;
+	int	i;
+	int	bench;
+	int	mode;
+	int	strategy_count;
+	char	**new_argv;
+	int	new_argc;
 
 	a = NULL;
 	b = NULL;
@@ -35,25 +38,62 @@ int	main(int argc, char **argv)
 		return (0);
 	mode = 0;
 	bench = 0;
+	strategy_count = 0;
+
 	i = 1;
-	while (i < argc && ft_strncmp(argv[i], "--", 2) == 0)
+	while (i < argc)
 	{
-		if (ft_strncmp(argv[i], "--bench", 7) == 0 && ft_strlen(argv[i]) == 7)
-			bench = 1;
-		else if (ft_strncmp(argv[i], "--simple", 8) == 0 && ft_strlen(argv[i]) == 8)
-			mode = 1;
-		else if (ft_strncmp(argv[i], "--medium", 8) == 0 && ft_strlen(argv[i]) == 8)
-			mode = 2;
-		else if (ft_strncmp(argv[i], "--complex", 9) == 0 && ft_strlen(argv[i]) == 9)
-			mode = 3;
-		else if (ft_strncmp(argv[i], "--adaptive", 10) == 0 && ft_strlen(argv[i]) == 10)
-			mode = 0;
-		else
-			ft_error();
+		if (ft_strncmp(argv[i], "--", 2) == 0)
+		{
+			if (ft_strncmp(argv[i], "--bench", 7) == 0 && ft_strlen(argv[i]) == 7)
+				bench = 1;
+			else if (ft_strncmp(argv[i], "--simple", 8) == 0 && ft_strlen(argv[i]) == 8)
+			{
+				mode = 1;
+				strategy_count++;
+			}
+			else if (ft_strncmp(argv[i], "--medium", 8) == 0 && ft_strlen(argv[i]) == 8)
+			{
+				mode = 2;
+				strategy_count++;
+			}
+			else if (ft_strncmp(argv[i], "--complex", 9) == 0 && ft_strlen(argv[i]) == 9)
+			{
+				mode = 3;
+				strategy_count++;
+			}
+			else if (ft_strncmp(argv[i], "--adaptive", 10) == 0 && ft_strlen(argv[i]) == 10)
+			{
+				mode = 0;
+				strategy_count++;
+			}
+			else
+				ft_error();
+		}
 		i++;
 	}
 
-	parse_args(argc - i + 1, argv + i - 1, &a);
+	if (strategy_count > 1)
+		ft_error();
+
+	new_argv = malloc(sizeof(char *) * (argc + 1));
+	if (!new_argv)
+		ft_error();
+	new_argc = 1;
+	new_argv[0] = argv[0];
+	i = 1;
+	while (i < argc)
+	{
+		if (!(ft_strncmp(argv[i], "--", 2) == 0))
+		{
+			new_argv[new_argc++] = argv[i];
+		}
+		i++;
+	}
+	new_argv[new_argc] = NULL;
+
+	parse_args(new_argc, new_argv, &a);
+	free(new_argv);
 	if (is_sorted(a))
 	{
 		free_stack(&a);
