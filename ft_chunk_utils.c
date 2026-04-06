@@ -6,11 +6,11 @@
 /*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 22:38:33 by marasolo          #+#    #+#             */
-/*   Updated: 2026/04/01 08:51:51 by traomeli         ###   ########.fr       */
+/*   Updated: 2026/04/01 22:49:16 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 int	pos_of_first_in_range(t_node *a, int lowv, int highv)
 {

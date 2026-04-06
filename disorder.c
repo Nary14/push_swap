@@ -6,11 +6,11 @@
 /*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 14:58:58 by traomeli          #+#    #+#             */
-/*   Updated: 2026/04/01 18:15:54 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/04/02 01:15:26 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 void	assign_index(t_node *a)
 {
@@ -89,4 +89,3 @@ double	compute_disorder(t_node *a)
 		return (0.0);
 	return ((double)inversions / ((double)n * (n - 1) / 2.0));
 }
-/* max inversions = n*(n-1)/2 */

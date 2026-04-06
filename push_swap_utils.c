@@ -6,41 +6,36 @@
 /*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 13:36:38 by marasolo          #+#    #+#             */
-/*   Updated: 2026/04/01 19:25:45 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/04/06 11:38:07 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "utils/libft_42/libft.h"
 
 int	is_flag(char *s, char *flag, int len)
 {
 	return (ft_strncmp(s, flag, len) == 0 && (int)ft_strlen(s) == len);
 }
 
-void	set_adaptive_complexity(int size)
+void	set_adaptive_complexity(double disorder)
 {
-	if (size <= 5)
-		ft_bench()->strategy_complexity = "O(n^2)";
-	else if (size <= 100)
-		ft_bench()->strategy_complexity = "O(n sqrt n)";
-	else
-		ft_bench()->strategy_complexity = "O(n log n)";
+	(void)disorder;
+	ft_bench()->strategy_complexity = "O(n√n)";
 }
 
-void	set_strategy(int mode, int size)
+void	set_strategy(double disorder)
 {
-	if (mode == 1)
+	if (disorder < 0.2)
 	{
 		ft_bench()->strategy_name = "Simple";
 		ft_bench()->strategy_complexity = "O(n^2)";
 	}
-	else if (mode == 2)
+	else if (0.2 <= disorder && disorder < 0.5)
 	{
 		ft_bench()->strategy_name = "Chunk";
-		ft_bench()->strategy_complexity = "O(n sqrt n)";
+		ft_bench()->strategy_complexity = "O(n√n)";
 	}
-	else if (mode == 3)
+	else if (disorder >= 0.5)
 	{
 		ft_bench()->strategy_name = "Radix";
 		ft_bench()->strategy_complexity = "O(n log n)";
@@ -48,7 +43,7 @@ void	set_strategy(int mode, int size)
 	else
 	{
 		ft_bench()->strategy_name = "Adaptive";
-		set_adaptive_complexity(size);
+		set_adaptive_complexity(disorder);
 	}
 }
 

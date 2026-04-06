@@ -6,7 +6,7 @@
 /*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 13:36:38 by marasolo          #+#    #+#             */
-/*   Updated: 2026/04/01 19:25:45 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/04/06 10:33:55 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ static void	bench_print_ops(void)
 	ft_putnbr_fd(ft_bench()->sa, 2);
 	ft_putstr_fd("  sb: ", 2);
 	ft_putnbr_fd(ft_bench()->sb, 2);
+	ft_putstr_fd("  ss: ", 2);
+	ft_putnbr_fd(ft_bench()->ss, 2);
 	ft_putstr_fd("  pa: ", 2);
 	ft_putnbr_fd(ft_bench()->pa, 2);
 	ft_putstr_fd("  pb: ", 2);
@@ -60,16 +62,19 @@ void	bench_print_summary(double disorder)
 
 	if (!ft_bench()->active)
 		return ;
-	(void)disorder;
 	total = ft_bench()->sa + ft_bench()->sb + ft_bench()->ss
 		+ ft_bench()->pa + ft_bench()->pb + ft_bench()->ra
 		+ ft_bench()->rb + ft_bench()->rr + ft_bench()->rra
 		+ ft_bench()->rrb + ft_bench()->rrr;
-	ft_putstr_fd("[bench] strategy : ", 2);
+	ft_putstr_fd("[bench] disorder: ", 2);
+	ft_float(disorder * 100, 2, 2);
+	ft_putchar_fd('%', 2);
+	ft_putchar_fd('\n', 2);
+	ft_putstr_fd("[bench] strategy:  ", 2);
 	ft_putstr_fd(ft_bench()->strategy_name, 2);
 	ft_putstr_fd(" / ", 2);
 	ft_putendl_fd(ft_bench()->strategy_complexity, 2);
-	ft_putstr_fd("[bench] total_ops : ", 2);
+	ft_putstr_fd("[bench] total_ops: ", 2);
 	ft_putnbr_fd(total, 2);
 	ft_putchar_fd('\n', 2);
 	bench_print_ops();

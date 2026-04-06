@@ -6,7 +6,7 @@
 /*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 06:20:35 by traomeli          #+#    #+#             */
-/*   Updated: 2026/04/01 19:25:45 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/04/06 11:38:20 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,14 @@ char	**build_new_argv(int argc, char **argv, int *new_argc)
 
 static void	ft_run_if_unsorted(t_node **a, t_node **b, int *params)
 {
-	if (is_sorted(*a))
-		return ;
-	set_strategy(params[0], stack_size(*a));
+	double	disorder;
+
+	disorder = compute_disorder(*a);
+	set_strategy(disorder);
 	ft_bench()->active = params[1];
 	assign_index(*a);
 	run_sort(a, b, params[0]);
-	bench_print_summary(0.0);
+	bench_print_summary(disorder);
 }
 
 int	main(int argc, char **argv)

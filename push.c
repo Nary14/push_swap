@@ -1,47 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 06:21:57 by traomeli          #+#    #+#             */
-/*   Updated: 2026/04/01 09:12:37 by traomeli         ###   ########.fr       */
+/*   Created: 2026/03/25 08:28:36 by traomeli          #+#    #+#             */
+/*   Updated: 2026/04/01 22:49:51 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
-void	rotate_stack(t_node **stack)
+static void	push(t_node **stack_a, t_node **stack_b)
 {
 	t_node	*temp;
+	t_node	*next;
 
-	if (!stack || !*stack)
+	if (stack_a == NULL || *stack_a == NULL)
 		return ;
-	temp = *stack;
-	*stack = temp->next;
-	temp->next = NULL;
-	add_back(stack, temp);
+	temp = *stack_a;
+	next = temp->next;
+	add_front(stack_b, temp);
+	*stack_a = next;
 }
 
-void	ra(t_node **a, int print)
+void	pa(t_node **a, t_node **b, int print)
 {
-	rotate_stack(a);
+	push(b, a);
 	if (print)
-		bench_log("ra\n", 1);
+		bench_log("pa\n", 1);
 }
 
-void	rb(t_node **b, int print)
+void	pb(t_node **a, t_node **b, int print)
 {
-	rotate_stack(b);
+	push(a, b);
 	if (print)
-		bench_log("rb\n", 1);
-}
-
-void	rr(t_node **a, t_node **b, int print)
-{
-	rotate_stack(a);
-	rotate_stack(b);
-	if (print)
-		bench_log("rr\n", 1);
+		bench_log("pb\n", 1);
 }

@@ -6,11 +6,11 @@
 /*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 06:46:26 by traomeli          #+#    #+#             */
-/*   Updated: 2026/04/01 09:12:37 by traomeli         ###   ########.fr       */
+/*   Updated: 2026/04/01 22:49:55 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 void	reverse_rotate_stack(t_node **stack)
 {

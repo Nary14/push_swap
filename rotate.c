@@ -1,40 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/25 08:28:36 by traomeli          #+#    #+#             */
-/*   Updated: 2026/04/01 09:12:37 by traomeli         ###   ########.fr       */
+/*   Created: 2026/03/26 06:21:57 by traomeli          #+#    #+#             */
+/*   Updated: 2026/04/01 22:50:00 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
-static void	push(t_node **stack_a, t_node **stack_b)
+void	rotate_stack(t_node **stack)
 {
 	t_node	*temp;
-	t_node	*next;
 
-	if (stack_a == NULL || *stack_a == NULL)
+	if (!stack || !*stack)
 		return ;
-	temp = *stack_a;
-	next = temp->next;
-	add_front(stack_b, temp);
-	*stack_a = next;
+	temp = *stack;
+	*stack = temp->next;
+	temp->next = NULL;
+	add_back(stack, temp);
 }
 
-void	pa(t_node **a, t_node **b, int print)
+void	ra(t_node **a, int print)
 {
-	push(b, a);
+	rotate_stack(a);
 	if (print)
-		bench_log("pa\n", 1);
+		bench_log("ra\n", 1);
 }
 
-void	pb(t_node **a, t_node **b, int print)
+void	rb(t_node **b, int print)
 {
-	push(a, b);
+	rotate_stack(b);
 	if (print)
-		bench_log("pb\n", 1);
+		bench_log("rb\n", 1);
+}
+
+void	rr(t_node **a, t_node **b, int print)
+{
+	rotate_stack(a);
+	rotate_stack(b);
+	if (print)
+		bench_log("rr\n", 1);
 }

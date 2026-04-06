@@ -6,11 +6,11 @@
 /*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 15:46:35 by traomeli          #+#    #+#             */
-/*   Updated: 2026/04/01 08:51:55 by traomeli         ###   ########.fr       */
+/*   Updated: 2026/04/01 22:49:22 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 static int	max_bits(t_node *a)
 {

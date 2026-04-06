@@ -18,25 +18,27 @@ This repository implements multiple sorting strategies and an adaptive dispatche
 ```
 push_swap/
 ├── Makefile
-├── push_swap.c          # main entry point
-├── push_swap.h          # shared headers and structs
-├── stack_utils.c        # node creation, add_front/back, size, sorted, free
-├── algorithms/
-│   ├── simple_sort.c    # O(n²) — for 2 to 5 elements
-│   ├── chunk_sort.c     # O(n√n) — for medium inputs (~100)
-│   ├── radix_sort.c     # O(n log n) — for large inputs (500+)
-│   └── adaptive_sort.c  # dispatcher — picks the right algo
-├── operations/
-│   ├── swap.c           # sa, sb, ss
-│   ├── push.c           # pa, pb
-│   ├── rotate.c         # ra, rb, rr
-│   └── reverse_rotate.c # rra, rrb, rrr
-├── parsing/
-│   ├── parse.c          # argument parsing and validation
-│   └── error.c          # error handling, duplicate and validity checks
-└── utils/
-    ├── disorder.c       # assign_index, ft_atol
-    └── libft_42/        # subset of libft (ft_split, ft_putstr_fd, etc.)
+├── push_swap.c              # main entry point
+├── push_swap.h              # shared headers and structs
+├── push_swap_utils.c        # helpers used by main and runs
+├── stack_utils.c            # node creation, add_front/back, size, sorted, free
+├── stack.c                  # t_node implementation
+├── parse.c                  # argument parsing and validation
+├── error.c                  # error handling, duplicate and validity checks
+├── disorder.c               # assign_index, ft_atol, disorder metric
+├── bench.c                  # bench counters and logging
+├── bench_print.c            # bench printing helpers
+├── ft_adaptive_sort.c       # dispatcher — picks the right algorithm
+├── ft_simple_sort.c         # simple sort (2..5 elements)
+├── ft_chunk_sort.c          # chunk-based algorithm
+├── ft_chunk_utils.c         # helpers for chunk sort
+├── ft_radix_sort.c          # radix sort algorithm
+├── rotate_to_top_a_b.c      # helpers to rotate elements to top
+├── rotate.c                 # rotate operations (ra, rb, rr)
+├── reverse_rotate.c         # reverse rotate ops (rra, rrb, rrr)
+├── push.c                   # push operations (pa, pb)
+├── swap.c                   # swap operations (sa, sb, ss)
+└── libft_42/                # subset of libft used by the project (many ft_*.c)
 ```
 
 ## Instructions
@@ -44,7 +46,7 @@ push_swap/
 ### Requirements
 
 - Linux or macOS
-- C compiler (cc/gcc) supporting C99 or later
+- C compiler (cc) supporting C99 or later
 - Make
 
 ### Compilation
@@ -209,4 +211,200 @@ Why O(n√n) beats O(n²): if chunk count m = √n, total work is O(n × √n) w
 Claude (Anthropic) was used throughout this project as a **learning and guidance tool**. It explained concepts step by step — linked lists, pointer manipulation, stack operations, algorithm design — and guided the implementation without writing code directly. All code was written, understood, and can be defended by the authors.
 
 Claude also helped structure and refine this README.
+
+## Add `--count-only` option
+
+## Goal
+
+Add a `--count-only` option to `push_swap` to print **only the total number of operations** required to sort the input, without printing the operations one by one.
+
+```bash
+# Expected behavior
+./push_swap --count-only 3 2 1       # prints: 2
+./push_swap --count-only 10 9 8 7 6 5 4 3 2 1  # prints: 29
+./push_swap 3 2 1                    # unchanged behavior: sa / rra
+```
+
+---
+
+## Understand the architecture before coding
+
+Before touching any code, explain to the evaluator why this change is simple:
+
+The project already has a `t_bench` struct (in `push_swap.h`) that **counts every operation** (sa, pb, ra, etc.), and a function `bench_log()` (in `bench.c`) that is called on each operation to both print and count it.
+
+So we do **not** need to create a new counter — we only need to:
+1. Add a `count_only` field to `t_bench`
+2. Modify `bench_log()` so it does not print when `count_only` is active
+3. Detect the `--count-only` flag in `parse_flags()`
+4. Print the total at the end of `main()`
+
+**3 files changed, ~15 lines added.**
+
+---
+
+## Step 1 — `push_swap.h`: add the field and declare the function
+
+Open `push_swap.h`. Find the `t_bench` struct and add `int count_only` right after `int active`:
+
+```c
+// BEFORE
+typedef struct s_bench
+{
+    int     active;
+    char    *strategy_name;
+    ...
+} t_bench;
+
+// AFTER
+typedef struct s_bench
+{
+    int     active;
+    int     count_only;      // <- added line
+    char    *strategy_name;
+    ...
+} t_bench;
+```
+
+Then, in the function declarations section add `bench_total()` alongside the other bench functions:
+
+```c
+// BEFORE
+void    bench_log_ops(char *op);
+void    bench_print_summary(double disorder);
+
+// AFTER
+void    bench_log_ops(char *op);
+void    bench_print_summary(double disorder);
+long    bench_total(void);       // <- added declaration
+```
+
+---
+
+## Step 2 — `bench.c`: change `bench_log()` and add `bench_total()`
+
+### 2a — Modify `bench_log()`
+
+```c
+// BEFORE
+void    bench_log(char *op, int print)
+{
+    if (print)
+        ft_putstr_fd(op, 1);
+    if (!ft_bench()->active)
+        return ;
+    ...
+}
+
+// AFTER
+void    bench_log(char *op, int print)
+{
+    if (print && !ft_bench()->count_only)   // <- do not print when count_only
+        ft_putstr_fd(op, 1);
+    if (!ft_bench()->active && !ft_bench()->count_only)  // <- still count when count_only
+        return ;
+    ...
+}
+```
+
+Explanation: the first line prevents printing each operation when `count_only` is active. The second line forces counting even if `--bench` was not passed.
+
+### 2b — Add `bench_total()` at the end of the file
+
+```c
+long    bench_total(void)
+{
+    t_bench *b;
+
+    b = ft_bench();
+    return (b->sa + b->sb + b->ss + b->pa + b->pb
+        + b->ra + b->rb + b->rr + b->rra + b->rrb + b->rrr);
+}
+```
+
+---
+
+## Step 3 — `push_swap.c`: detect the flag and print the result
+
+### 3a — Detect `--count-only` in `parse_flags()`
+
+```c
+// BEFORE
+while (i < argc)
+{
+    if (is_flag(argv[i], "--bench", 7))
+        *bench = 1;
+    else if (is_flag(argv[i], "--simple", 8) && ++sc)
+    ...
+}
+
+// AFTER
+while (i < argc)
+{
+    if (is_flag(argv[i], "--bench", 7))
+        *bench = 1;
+    else if (is_flag(argv[i], "--count-only", 12))  // <- added block
+        ft_bench()->count_only = 1;
+    else if (is_flag(argv[i], "--simple", 8) && ++sc)
+    ...
+}
+```
+
+### 3b — Print the total at the end of `main()`
+
+```c
+// BEFORE
+    ft_run_if_unsorted(&a, &b, params);
+    free_stack(&a);
+
+// AFTER
+    ft_run_if_unsorted(&a, &b, params);
+    if (ft_bench()->count_only)                          // <- 2 lines added
+        ft_putnbr_fd(bench_total(), 1), ft_putstr_fd("\n", 1);
+    free_stack(&a);
+```
+
+---
+
+## Step 4 — Build and demo
+
+```bash
+make re
+```
+
+### Demo for the evaluator
+
+```bash
+# 3-element reversed
+./push_swap --count-only 3 2 1
+# → 2
+
+# 10-element reversed
+./push_swap --count-only 10 9 8 7 6 5 4 3 2 1
+# → 29
+
+# Normal mode unchanged
+./push_swap 3 2 1
+# → sa
+# → rra
+
+# Already sorted — should print 0
+./push_swap --count-only 1 2 3
+# → 0
+
+# Consistency check: the count-only result should match the number of printed lines
+./push_swap 5 1 4 2 3 | wc -l
+./push_swap --count-only 5 1 4 2 3
+# → both should produce the same number
+```
+
+---
+
+## Summary of changes
+
+| File | Change |
+|---|---|
+| `push_swap.h` | +`count_only` field in `t_bench`, +`bench_total()` declaration |
+| `bench.c` | Modify `bench_log()` (small change), add `bench_total()` |
+| `push_swap.c` | Add `--count-only` detection in `parse_flags()`, print total in `main()` |
 

@@ -6,11 +6,11 @@
 /*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 07:39:20 by traomeli          #+#    #+#             */
-/*   Updated: 2026/04/01 09:12:37 by traomeli         ###   ########.fr       */
+/*   Updated: 2026/04/01 22:50:08 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 static void	swap_top(t_node **stack)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
+/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 10:59:38 by traomeli          #+#    #+#             */
-/*   Updated: 2026/04/01 08:52:47 by traomeli         ###   ########.fr       */
+/*   Updated: 2026/04/02 03:14:18 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ t_node	*new_node(int value)
 	return (mall);
 }
 
-int	is_sorted(t_node *stack)
-{
-	while (stack && stack->next)
-	{
-		if (stack->value > stack->next->value)
-			return (0);
-		stack = stack->next;
-	}
-	return (1);
-}
+// int	is_sorted(t_node *stack)
+// {
+// 	while (stack && stack->next)
+// 	{
+// 		if (stack->value > stack->next->value)
+// 			return (0);
+// 		stack = stack->next;
+// 	}
+// 	return (1);
+// }

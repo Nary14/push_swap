@@ -6,14 +6,14 @@
 /*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 07:51:56 by traomeli          #+#    #+#             */
-/*   Updated: 2026/04/01 21:33:45 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/04/06 11:38:16 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "utils/libft_42/libft.h"
+# include "libft_42/libft.h"
 # include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -67,7 +67,6 @@ t_node		*new_node(int value);
 void		add_back(t_node **stack, t_node *new_n);
 void		add_front(t_node **stack, t_node *new_n);
 int			stack_size(t_node *stack);
-int			is_sorted(t_node *stack);
 
 void		free_stack(t_node **stack);
 
@@ -94,6 +93,8 @@ void		ft_adaptive_sort(t_node **stack1, t_node **stack2);
 
 void		push_swap(t_node **a, t_node **b);
 
+void		ft_float(double n, int precision, int fd);
+
 int			pos_of_first_in_range(t_node *a, int lowv, int highv);
 int			pos_of_max(t_node *s);
 
@@ -103,10 +104,10 @@ void		bench_log_ops(char *op);
 void		bench_print_summary(double disorder);
 
 int			is_flag(char *s, char *flag, int len);
-void		set_adaptive_complexity(int size);
+void		set_adaptive_complexity(double disorder);
 void		run_sort(t_node **a, t_node **b, int mode);
 void		check_has_numbers(int argc, char **argv);
-void		set_strategy(int mode, int size);
+void		set_strategy(double disorder);
 void		parse_flags(int argc, char **argv, int *mode, int *bench);
 char		**build_new_argv(int argc, char **argv, int *new_argc);
 double		compute_disorder(t_node *a);
