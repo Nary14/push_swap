@@ -38,6 +38,7 @@ push_swap/
 ├── reverse_rotate.c         # reverse rotate ops (rra, rrb, rrr)
 ├── push.c                   # push operations (pa, pb)
 ├── swap.c                   # swap operations (sa, sb, ss)
+├── ft_float.c               # print float
 └── libft_42/                # subset of libft used by the project (many ft_*.c)
 ```
 
