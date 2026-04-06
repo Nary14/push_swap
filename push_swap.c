@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
+/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 06:20:35 by traomeli          #+#    #+#             */
-/*   Updated: 2026/04/06 11:38:20 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/04/06 15:50:39 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static void	ft_run_if_unsorted(t_node **a, t_node **b, int *params)
 	double	disorder;
 
 	disorder = compute_disorder(*a);
-	set_strategy(disorder);
+	set_strategy(disorder, stack_size(*a));
 	ft_bench()->active = params[1];
 	assign_index(*a);
 	run_sort(a, b, params[0]);

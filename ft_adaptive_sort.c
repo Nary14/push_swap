@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_adaptive_sort.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
+/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 10:39:29 by marasolo          #+#    #+#             */
-/*   Updated: 2026/04/06 11:28:26 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/04/06 15:46:39 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ void	ft_adaptive_sort(t_node **stack1, t_node **stack2)
 	size = stack_size(*stack1);
 	if (sorted(*stack1))
 		return ;
-	if (disorder < 0.2)
+	if (disorder < 0.2 || size <= 5)
 		ft_simple_sort(stack1, stack2, size);
-	else if (0.2 <= disorder && disorder < 0.5)
+	else if (0.2 <= disorder && disorder < 0.5 && size > 5)
 	{
 		chunks = size / 10;
 		if (chunks < 1)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
+/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 13:36:38 by marasolo          #+#    #+#             */
-/*   Updated: 2026/04/06 11:38:07 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/04/06 15:51:27 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,19 @@ void	set_adaptive_complexity(double disorder)
 	ft_bench()->strategy_complexity = "O(n√n)";
 }
 
-void	set_strategy(double disorder)
+void	set_strategy(double disorder, int size)
 {
-	if (disorder < 0.2)
+	if (disorder < 0.2 || size <= 5)
 	{
 		ft_bench()->strategy_name = "Simple";
 		ft_bench()->strategy_complexity = "O(n^2)";
 	}
-	else if (0.2 <= disorder && disorder < 0.5)
+	else if (0.2 <= disorder && disorder < 0.5 && size > 5)
 	{
 		ft_bench()->strategy_name = "Chunk";
 		ft_bench()->strategy_complexity = "O(n√n)";
 	}
-	else if (disorder >= 0.5)
+	else if (disorder >= 0.5 || size > 100)
 	{
 		ft_bench()->strategy_name = "Radix";
 		ft_bench()->strategy_complexity = "O(n log n)";

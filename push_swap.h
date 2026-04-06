@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
+/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 07:51:56 by traomeli          #+#    #+#             */
-/*   Updated: 2026/04/06 11:38:16 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/04/06 15:49:20 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int			is_flag(char *s, char *flag, int len);
 void		set_adaptive_complexity(double disorder);
 void		run_sort(t_node **a, t_node **b, int mode);
 void		check_has_numbers(int argc, char **argv);
-void		set_strategy(double disorder);
+void		set_strategy(double disorder, int size);
 void		parse_flags(int argc, char **argv, int *mode, int *bench);
 char		**build_new_argv(int argc, char **argv, int *new_argc);
 double		compute_disorder(t_node *a);
