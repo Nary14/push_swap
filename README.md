@@ -127,7 +127,7 @@ Using `index` instead of `value` in algorithms like radix_sort simplifies the lo
 
 ### 1. Simple sort — O(n²)
 
-**File:** `algorithms/simple_sort.c` — initial skeleton by marasolo, completed by traomeli.
+**File:** `simple_sort.c` — initial skeleton by marasolo, completed by traomeli.
 
 **For 2 elements:** one `sa` if needed.
 
@@ -139,7 +139,7 @@ Using `index` instead of `value` in algorithms like radix_sort simplifies the lo
 
 ### 2. Chunk sort — O(n√n)
 
-**File:** `algorithms/chunk_sort.c` — implemented by traomeli.
+**File:** `chunk_sort.c` — implemented by traomeli.
 
 **Approach:**
 1. Build a sorted reference array of values using `qsort`
@@ -151,7 +151,7 @@ Using `index` instead of `value` in algorithms like radix_sort simplifies the lo
 
 ### 3. Radix sort — O(n log n)
 
-**File:** `algorithms/radix_sort.c` — implemented by traomeli.
+**File:** `radix_sort.c` — implemented by traomeli.
 
 **Approach:** LSD binary radix on `index` values (ranks 0..n-1):
 - For each bit position from LSB to MSB:
@@ -165,7 +165,7 @@ Using `index` instead of `value` in algorithms like radix_sort simplifies the lo
 
 ### 4. Adaptive strategy
 
-**File:** `algorithms/adaptive_sort.c` — implemented by traomeli.
+**File:** `adaptive_sort.c` — implemented by traomeli.
 
 The dispatcher selects the algorithm based on input size:
 
