@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
+/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 05:55:20 by marasolo          #+#    #+#             */
-/*   Updated: 2026/04/01 22:49:03 by traomeli         ###   ########.fr       */
+/*   Updated: 2026/04/08 20:47:31 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,5 @@ void	ft_error(void)
 void	ft_error_exit(void)
 {
 	print_error();
-	_exit(EXIT_FAILURE);
+	exit(EXIT_FAILURE);
 }

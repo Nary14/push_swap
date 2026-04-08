@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
+/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 06:20:35 by traomeli          #+#    #+#             */
-/*   Updated: 2026/04/08 16:21:08 by traomeli         ###   ########.fr       */
+/*   Updated: 2026/04/08 21:36:44 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,14 @@ void	parse_flags(int argc, char **argv, int *mode, int *bench)
 	{
 		if (is_flag(argv[i], "--bench", 7))
 			*bench = 1;
-		else if (is_flag(argv[i], "--simple", 8) && ++sc)
-		{
-			*mode = 1;
-			ft_bench()->strategy_forced = 1;
-		}
-		else if (is_flag(argv[i], "--medium", 8) && ++sc)
-		{
-			*mode = 2;
-			ft_bench()->strategy_forced = 2;
-		}
-		else if (is_flag(argv[i], "--complex", 9) && ++sc)
-		{
-			*mode = 3;
-			ft_bench()->strategy_forced = 3;
-		}
-		else if (is_flag(argv[i], "--adaptive", 10) && ++sc)
-		{
-			*mode = 0;
-			ft_bench()->strategy_forced = 0;
-		}
+		else if (is_flag(argv[i], "--simple", 8))
+			handle_mode(mode, 1, &sc);
+		else if (is_flag(argv[i], "--medium", 8))
+			handle_mode(mode, 2, &sc);
+		else if (is_flag(argv[i], "--complex", 9))
+			handle_mode(mode, 3, &sc);
+		else if (is_flag(argv[i], "--adaptive", 10))
+			handle_mode(mode, 0, &sc);
 		else if (ft_strncmp(argv[i], "--", 2) == 0)
 			ft_error_exit();
 		i++;
@@ -109,7 +97,11 @@ int	main(int argc, char **argv)
 	parse_flags(argc, argv, &params[0], &params[1]);
 	new_argv = build_new_argv(argc, argv, &params[2]);
 	if (!parse_args(params[2], new_argv, &a))
-		return (free(new_argv), ft_error_exit(), 1);
+	{
+		free(new_argv);
+		ft_error_exit();
+		return (1);
+	}
 	free(new_argv);
 	ft_run_if_unsorted(&a, &b, params);
 	free_stack(&a);

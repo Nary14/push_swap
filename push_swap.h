@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
+/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 07:51:56 by traomeli          #+#    #+#             */
-/*   Updated: 2026/04/08 18:07:40 by traomeli         ###   ########.fr       */
+/*   Updated: 2026/04/08 21:34:13 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,8 @@ void		set_strategy(double disorder, int size);
 void		parse_flags(int argc, char **argv, int *mode, int *bench);
 char		**build_new_argv(int argc, char **argv, int *new_argc);
 double		compute_disorder(t_node *a);
+
+void		handle_mode(int *mode, int val, int *sc);
+void		set_forced_meta(int forced);
 
 #endif

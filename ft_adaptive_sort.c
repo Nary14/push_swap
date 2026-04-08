@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_adaptive_sort.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
+/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 10:39:29 by marasolo          #+#    #+#             */
-/*   Updated: 2026/04/06 15:46:39 by traomeli         ###   ########.fr       */
+/*   Updated: 2026/04/08 21:03:39 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 static int	sorted(t_node *stack)
 {
@@ -40,7 +39,7 @@ void	ft_adaptive_sort(t_node **stack1, t_node **stack2)
 		ft_simple_sort(stack1, stack2, size);
 	else if (0.2 <= disorder && disorder < 0.5 && size > 5)
 	{
-		chunks = size / 10;
+		chunks = size / 12;
 		if (chunks < 1)
 			chunks = 1;
 		ft_chunk_sort(stack1, stack2, chunks);

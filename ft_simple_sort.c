@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_simple_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
+/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 05:27:48 by marasolo          #+#    #+#             */
-/*   Updated: 2026/04/08 18:25:39 by traomeli         ###   ########.fr       */
+/*   Updated: 2026/04/08 20:39:59 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

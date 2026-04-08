@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*   push_swap_utils_1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
+/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 13:36:38 by marasolo          #+#    #+#             */
-/*   Updated: 2026/04/08 18:07:24 by traomeli         ###   ########.fr       */
+/*   Updated: 2026/04/08 21:24:24 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,30 +29,11 @@ void	set_adaptive_complexity(double disorder, int size)
 
 void	set_strategy(double disorder, int size)
 {
-	if (ft_bench()->strategy_forced != -1)
-	{
-		if (ft_bench()->strategy_forced == 1)
-		{
-			ft_bench()->strategy_name = "Simple";
-			ft_bench()->strategy_complexity = "O(n^2)";
-		}
-		else if (ft_bench()->strategy_forced == 2)
-		{
-			ft_bench()->strategy_name = "Chunk";
-			ft_bench()->strategy_complexity = "O(n√n)";
-		}
-		else if (ft_bench()->strategy_forced == 3)
-		{
-			ft_bench()->strategy_name = "Radix";
-			ft_bench()->strategy_complexity = "O(n log n)";
-		}
-		else
-		{
-			ft_bench()->strategy_name = "Adaptive";
-			set_adaptive_complexity(disorder, size);
-		}
-		return ;
-	}
+	int	forced;
+
+	forced = ft_bench()->strategy_forced;
+	if (forced != -1 && forced != 0)
+		return (set_forced_meta(forced));
 	ft_bench()->strategy_name = "Adaptive";
 	set_adaptive_complexity(disorder, size);
 }

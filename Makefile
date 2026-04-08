@@ -4,7 +4,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 SRCS = \
 	push_swap.c \
-	push_swap_utils.c \
+	push_swap_utils_1.c \
+	push_swap_utils_2.c \
 	bench.c \
 	bench_print.c \
 	parse.c \

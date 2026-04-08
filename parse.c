@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
+/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 09:55:37 by marasolo          #+#    #+#             */
-/*   Updated: 2026/04/01 22:49:35 by traomeli         ###   ########.fr       */
+/*   Updated: 2026/04/08 21:36:16 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
