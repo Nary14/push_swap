@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: traomeli <traomeli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 14:54:57 by traomeli          #+#    #+#             */
-/*   Updated: 2026/01/26 16:44:05 by traomeli         ###   ########.fr       */
+/*   Updated: 2026/04/08 18:22:45 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,12 @@ char	*ft_itoa(int n)
 	long	num;
 	int		len;
 	int		is_negative;
-	long	temp;
 
 	num = n;
 	len = ft_c(n);
 	is_negative = ft_isnegative(num);
 	if (is_negative)
 		num = -num;
-	temp = num;
 	len += is_negative;
 	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)

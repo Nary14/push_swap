@@ -6,7 +6,7 @@
 /*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 07:51:56 by traomeli          #+#    #+#             */
-/*   Updated: 2026/04/06 15:49:20 by traomeli         ###   ########.fr       */
+/*   Updated: 2026/04/08 18:07:40 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_bench
 	int		active;
 	char	*strategy_name;
 	char	*strategy_complexity;
+	int		strategy_forced;
 	long	sa;
 	long	sb;
 	long	ss;
@@ -104,7 +105,7 @@ void		bench_log_ops(char *op);
 void		bench_print_summary(double disorder);
 
 int			is_flag(char *s, char *flag, int len);
-void		set_adaptive_complexity(double disorder);
+void		set_adaptive_complexity(double disorder, int size);
 void		run_sort(t_node **a, t_node **b, int mode);
 void		check_has_numbers(int argc, char **argv);
 void		set_strategy(double disorder, int size);

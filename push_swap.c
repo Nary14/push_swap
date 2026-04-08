@@ -6,7 +6,7 @@
 /*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 06:20:35 by traomeli          #+#    #+#             */
-/*   Updated: 2026/04/06 15:50:39 by traomeli         ###   ########.fr       */
+/*   Updated: 2026/04/08 16:21:08 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,25 @@ void	parse_flags(int argc, char **argv, int *mode, int *bench)
 		if (is_flag(argv[i], "--bench", 7))
 			*bench = 1;
 		else if (is_flag(argv[i], "--simple", 8) && ++sc)
+		{
 			*mode = 1;
+			ft_bench()->strategy_forced = 1;
+		}
 		else if (is_flag(argv[i], "--medium", 8) && ++sc)
+		{
 			*mode = 2;
+			ft_bench()->strategy_forced = 2;
+		}
 		else if (is_flag(argv[i], "--complex", 9) && ++sc)
+		{
 			*mode = 3;
+			ft_bench()->strategy_forced = 3;
+		}
 		else if (is_flag(argv[i], "--adaptive", 10) && ++sc)
+		{
 			*mode = 0;
+			ft_bench()->strategy_forced = 0;
+		}
 		else if (ft_strncmp(argv[i], "--", 2) == 0)
 			ft_error_exit();
 		i++;

@@ -6,7 +6,7 @@
 /*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 05:27:48 by marasolo          #+#    #+#             */
-/*   Updated: 2026/04/01 22:49:29 by traomeli         ###   ########.fr       */
+/*   Updated: 2026/04/08 18:25:39 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,27 +98,6 @@ static void	ft_simple_sort_4_5(t_node **stack1, t_node **stack2, int size)
 	while (*stack2)
 		pa(stack1, stack2, 1);
 }
-
-// static void	ft_simple_sort_4_5(t_node **stack1, t_node **stack2, int size)
-// {
-// 	int	min_index;
-
-// 	while (size > 3)
-// 	{
-// 		min_index = find_min_index(stack1);
-// 		if (min_index < size / 2)
-// 			while (min_index-- > 0)
-// 				ra(stack1, 1);
-// 		else
-// 			while (min_index++ < size)
-// 				rra(stack1, 1);
-// 		pb(stack1, stack2, 1);
-// 		size--;
-// 	}
-// 	ft_simple_sort(stack1, stack2, size);
-// 	while (*stack2)
-// 		pa(stack1, stack2, 1);
-// }
 
 void	ft_simple_sort(t_node **stack1, t_node **stack2, int size)
 {

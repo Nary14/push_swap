@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bench.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
+/*   By: traomeli <traomeli@student.42Antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 13:36:38 by marasolo          #+#    #+#             */
-/*   Updated: 2026/04/02 01:17:42 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/04/08 16:20:58 by traomeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	bench_init(void)
 	ft_bench()->active = 0;
 	ft_bench()->strategy_name = "Unknown";
 	ft_bench()->strategy_complexity = "";
+	ft_bench()->strategy_forced = -1;
 	ft_bench()->sa = 0;
 	ft_bench()->sb = 0;
 	ft_bench()->ss = 0;
