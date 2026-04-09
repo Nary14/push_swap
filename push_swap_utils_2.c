@@ -6,7 +6,7 @@
 /*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 21:23:34 by marasolo          #+#    #+#             */
-/*   Updated: 2026/04/08 21:31:30 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/04/09 06:18:35 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	set_forced_meta(int forced)
 	if (forced == 1)
 		ft_bench()->strategy_name = "Simple";
 	else if (forced == 2)
-		ft_bench()->strategy_name = "Chunk";
+		ft_bench()->strategy_name = "medium";
 	else if (forced == 3)
-		ft_bench()->strategy_name = "Radix";
+		ft_bench()->strategy_name = "complex";
 	if (forced == 1)
 		ft_bench()->strategy_complexity = "O(n^2)";
 	else if (forced == 2)

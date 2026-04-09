@@ -6,7 +6,7 @@
 /*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 09:55:37 by marasolo          #+#    #+#             */
-/*   Updated: 2026/04/08 21:36:16 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/04/09 13:06:42 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,28 +31,56 @@ int	process_number(char	*str, t_node **stack)
 	return (1);
 }
 
+static int is_number(char *str)
+{
+    int i;
+
+    i = 0;
+    if (str[i] == '-' || str[i] == '+')
+        i++;
+    if (!str[i])
+        return (0);
+    while (str[i])
+    {
+        if (!ft_isdigit(str[i]))
+            return (0);
+        i++;
+    }
+    return (1);
+}
+
 int	parse_strings(char *str, t_node **stack)
 {
 	char	**split;
 	int		i;
 	int		result;
+	char    *joined;
 
-	split = ft_split(str, ' ');
-	if (!split)
+	i = 0;
+	joined = ft_strjoin(str, " ");
+	if (!joined)
 		return (0);
-	if (!split[0])
+	split = ft_split(joined, ' ');
+	free(joined);
+	if (!split ||!split[0])
 	{
 		free(split);
-		return (0);
+		return (1);
 	}
-	i = 0;
 	result = 1;
 	while (split[i])
 	{
-		if (!process_number(split[i], stack))
-			result = 0;
-		free(split[i]);
-		i++;
+		 if (is_number(split[i]))
+        {
+            if (!process_number(split[i], stack))
+            {
+                free(split[i]);
+                free(split);
+                return (0);
+            }
+        }
+        free(split[i]);
+        i++;
 	}
 	free(split);
 	return (result);
