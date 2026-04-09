@@ -6,7 +6,7 @@
 /*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 09:55:37 by marasolo          #+#    #+#             */
-/*   Updated: 2026/04/09 13:12:40 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/04/09 13:37:33 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,32 +31,29 @@ int	process_number(char	*str, t_node **stack)
 	return (1);
 }
 
-static int is_number(char *str)
+static int	is_number(char *str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    if (str[i] == '-' || str[i] == '+')
-        i++;
-    if (!str[i])
-        return (0);
-    while (str[i])
-    {
-        if (!ft_isdigit(str[i]))
-            return (0);
-        i++;
-    }
-    return (1);
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	if (!str[i])
+		return (0);
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 int	parse_strings(char *str, t_node **stack)
 {
 	char	**split;
-	int		i;
-	int		result;
-	char    *joined;
+	char	*joined;
 
-	i = 0;
 	joined = ft_strjoin(str, " ");
 	if (!joined)
 		return (0);
@@ -67,23 +64,30 @@ int	parse_strings(char *str, t_node **stack)
 		free(split);
 		return (1);
 	}
-	result = 1;
+	parse_strings_utils(split, stack);
+	free(split);
+	return (1);
+}
+
+void	parse_strings_utils(char **split, t_node **stack)
+{
+	int	i;
+
+	i = 0;
 	while (split[i])
 	{
-		 if (is_number(split[i]))
-        {
-            if (!process_number(split[i], stack))
-            {
-                free(split[i]);
-                free(split);
-                result = 0;
-            }
-        }
-        free(split[i]);
-        i++;
+		if (is_number(split[i]))
+		{
+			if (!process_number(split[i], stack))
+			{
+				free(split[i]);
+				free(split);
+				return ;
+			}
+		}
+		free(split[i]);
+		i++;
 	}
-	free(split);
-	return (result);
 }
 
 int	parse_args(int argc, char **argv, t_node **a)

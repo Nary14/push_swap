@@ -6,7 +6,7 @@
 /*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 07:51:56 by traomeli          #+#    #+#             */
-/*   Updated: 2026/04/08 21:34:13 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/04/09 13:38:37 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,5 +115,6 @@ double		compute_disorder(t_node *a);
 
 void		handle_mode(int *mode, int val, int *sc);
 void		set_forced_meta(int forced);
+void		parse_strings_utils(char **split, t_node **stack);
 
 #endif
