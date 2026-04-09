@@ -6,7 +6,7 @@
 /*   By: marasolo <marasolo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 09:55:37 by marasolo          #+#    #+#             */
-/*   Updated: 2026/04/09 13:06:42 by marasolo         ###   ########.fr       */
+/*   Updated: 2026/04/09 13:12:40 by marasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	parse_strings(char *str, t_node **stack)
             {
                 free(split[i]);
                 free(split);
-                return (0);
+                result = 0;
             }
         }
         free(split[i]);
